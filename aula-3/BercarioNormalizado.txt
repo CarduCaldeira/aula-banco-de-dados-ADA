@@ -1,0 +1,87 @@
+bebe{
+  id int pk
+  nome string
+  data_nascimento date
+  peso float
+  altura int
+  mae_id int
+  medico_id int
+}
+
+mae{
+  id int pk
+  nome string
+  lougradouro string
+  numero string
+  complemento string
+  bairro_id int 
+  cep string
+  telefone string
+  data_nascimento date
+}
+
+bairro{
+  id int pk
+  nome string
+  municipio_id int fk
+}
+
+municipio{
+  id int pk
+  nome string
+  uf_id int fk
+}
+
+uf{
+  id int pk
+  nome string
+  sigla string
+}
+
+medico{
+  id int pk
+  nome string
+  crm string
+  telefone string
+  lougradouro string
+  numero string
+  complemento string
+  bairro_id int
+  cep string
+}
+
+mae_telefone{
+  id int pk
+  numero string
+}
+
+medico_telefone{
+  id int pk
+  numero string
+}
+
+especialidade{
+  id int pk
+  descricao string
+}
+
+bebe.mae_id > mae.id
+mae.id - bebe.mae_id
+
+bebe.medico_id > medico.id
+
+medico.id <> especialidade.id
+
+mae_telefone.id > mae.id
+medico_telefone.id > medico.id
+
+municipio.uf_id > uf.id
+bairro.municipio_id > municipio.id
+
+mae.bairro_id > bairro.id
+medico.bairro_id > bairro.id
+
+
+
+
+
